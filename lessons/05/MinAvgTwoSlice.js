@@ -3,9 +3,12 @@ function solution(A) {
   let minIndex;
 
   for (let i = 0; i < A.length - 1; i++) {
+    let sum = A[i];
+
     for (let j = i + 1; j < A.length; j++) {
-      const slice = A.slice(i, j + 1);
-      const average = slice.reduce((sum, n) => (sum += n), 0) / slice.length;
+      sum += A[j];
+
+      const average = sum / (j - i + 1);
 
       if (average < minAverage) {
         minAverage = average;
