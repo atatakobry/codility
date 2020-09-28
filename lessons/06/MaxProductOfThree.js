@@ -1,4 +1,4 @@
-function solution(A) {
+const getMaxProduct = (A) => {
   let maxProduct = -Infinity;
 
   for (let i = 0; i < A.length - 2; i++) {
@@ -14,4 +14,15 @@ function solution(A) {
   }
 
   return maxProduct;
+};
+
+function solution(A) {
+  if (A.length <= 6) {
+    return getMaxProduct(A);
+  }
+
+  const B = A.sort((a, b) => a - b);
+  const C = [].concat(B.slice(0, 3), B.slice(-3));
+
+  return getMaxProduct(C);
 }
